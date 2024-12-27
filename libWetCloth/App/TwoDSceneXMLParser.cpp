@@ -1833,8 +1833,15 @@ void TwoDSceneXMLParser::loadHairs(rapidxml::xml_node<>* node,
       twodscene->setEdgeToParameter(eidx, idx_sp);
     }
 
-    twodscene->insertForce(std::make_shared<StrandForce>(
-        twodscene, particle_indices, idx_sp, numstrands));
+    
+    {
+      auto strand_force = std::make_shared<StrandForce>(
+          twodscene, particle_indices, idx_sp, numstrands);
+      twodscene->insertForce(strand_force);
+      //only for debugging
+      twodscene->insertStrandForce(strand_force);
+    }
+
 
     VectorXi solve_group(particle_indices.size());
     for (int i = 0; i < (int)particle_indices.size(); ++i)

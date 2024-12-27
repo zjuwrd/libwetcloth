@@ -16,3 +16,10 @@ log*.*
 *.off
 result*/*
 *.xcuserstate
+/AntTweakBar
+/lib
+/out
+/.cache
+/.vscode
+/compile_commands.json
+

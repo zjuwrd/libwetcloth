@@ -189,7 +189,12 @@ void TwoDScene::swapParticles(int i, int j) {
   std::swap(m_fluid_vol(i), m_fluid_vol(j));
   std::swap(m_shape_factor(i), m_shape_factor(j));
   std::swap(m_fixed[i], m_fixed[j]);
-  std::swap(m_twist[i], m_twist[j]);
+  // std::swap(m_twist[i], m_twist[j]);
+  {
+    auto tmp = m_twist[i];
+    m_twist[i] = m_twist[j];
+    m_twist[j] = tmp;
+  }
   std::swap(m_particle_to_edge[i], m_particle_to_edge[j]);
   std::swap(m_particle_to_face[i], m_particle_to_face[j]);
   std::swap(m_particle_to_surfel[i], m_particle_to_surfel[j]);
@@ -201,7 +206,12 @@ void TwoDScene::swapParticles(int i, int j) {
   std::swap(m_inside[i], m_inside[j]);
   std::swap(m_classifier[i], m_classifier[j]);
 
-  std::swap(m_is_strand_tip[i], m_is_strand_tip[j]);
+  // std::swap(m_is_strand_tip[i], m_is_strand_tip[j]);
+  {
+    auto tmp = m_is_strand_tip[i];
+    m_is_strand_tip[i] = m_is_strand_tip[j];
+    m_is_strand_tip[j] = tmp;
+  }
 
   mathutils::swap<scalar, 3>(m_B, i, j);
   mathutils::swap<scalar, 3>(m_fB, i, j);
@@ -7436,6 +7446,10 @@ void TwoDScene::insertScript(const std::shared_ptr<Script>& script) {
 
 void TwoDScene::insertForce(const std::shared_ptr<Force>& newforce) {
   m_forces.push_back(newforce);
+}
+void TwoDScene::insertStrandForce(const std::shared_ptr<StrandForce>& new_strand_force)
+{
+  m_strands.push_back(new_strand_force);
 }
 
 scalar TwoDScene::computeKineticEnergy() const {

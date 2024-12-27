@@ -644,6 +644,8 @@ class TwoDScene : public std::enable_shared_from_this<TwoDScene> {
 
   void insertForce(const std::shared_ptr<Force>& newforce);
 
+  void insertStrandForce(const std::shared_ptr<StrandForce>& new_strand_force);
+
   void setTipVerts(int particle, bool tipVerts);
 
   void accumulateGradU(VectorXs& F, const VectorXs& dx = VectorXs(),
