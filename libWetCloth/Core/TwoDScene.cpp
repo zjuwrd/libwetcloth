@@ -16,6 +16,7 @@
 #include <iostream>
 #include <numeric>
 #include <stack>
+#include <unordered_set>
 
 #include "AttachForce.h"
 #include "DER/StrandForce.h"

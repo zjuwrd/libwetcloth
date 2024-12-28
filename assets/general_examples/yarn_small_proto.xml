@@ -4,7 +4,7 @@
   <integrator type="linearized-implicit-euler" dt="0.001" apic="1" criterion="1e-4" manifoldsubsteps="1"/>
   <collision type="continuous-time"/>
   <bucketinfo size="5.0" numcells="4"/>
-  <simplegravity fx="0.0" fy="-981.0" fz="0.0" />
+  <simplegravity fx="0.0" fy="-0.0" fz="0.0" />
   <ElasticParameters>
     <radius value="0.048" />
     <youngsModulus value="6.6e7"/>
@@ -33,7 +33,7 @@
   </liquidinfo>
 
   <distancefield usage="terminator" type="box" cx="7.128" cy="0.0" cz="7.128" rx="0.0" ry="1.0" rz="0.0" rw="0.0" ex="21.6" ey="21.6" ez="21.6" radius="0.72" group="3" sampled="0" inside="1"/>
-<particle x="0.0 0.072 0.144" v="0.0 0.0 0.0" fixed="1" group="0"/>
+<particle x="0.0 0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="0.144 -0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="0.288 -0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="0.432 0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
@@ -132,7 +132,7 @@
 <particle x="13.824 0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="13.968 -0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="14.112 -0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
-<particle x="14.256 0.072 0.144" v="0.0 0.0 0.0" fixed="1" group="0"/>
+<particle x="14.256 0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="0"/>
 
 <particle x="0.0 0.072 0.288" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="0.144 0.072 0.288" v="0.0 0.0 0.0" fixed="0" group="0"/>
@@ -9830,7 +9830,7 @@
 <particle x="14.112 -0.072 13.968" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="14.256 0.072 13.968" v="0.0 0.0 0.0" fixed="0" group="0"/>
 
-<particle x="0.0 0.072 14.112" v="0.0 0.0 0.0" fixed="1" group="0"/>
+<particle x="0.0 0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="0.144 0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="0.288 -0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="0.432 -0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
@@ -9929,9 +9929,9 @@
 <particle x="13.824 0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="13.968 0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
 <particle x="14.112 -0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
-<particle x="14.256 -0.072 14.112" v="0.0 0.0 0.0" fixed="1" group="0"/>
+<particle x="14.256 -0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="0"/>
 
-<particle x="0.144 0.072 0.0" v="0.0 0.0 0.0" fixed="1" group="1"/>
+<particle x="0.144 0.072 0.0" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="0.144 0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="0.144 -0.072 0.288" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="0.144 -0.072 0.432" v="0.0 0.0 0.0" fixed="0" group="1"/>
@@ -10030,7 +10030,7 @@
 <particle x="0.144 0.072 13.824" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="0.144 0.072 13.968" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="0.144 -0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="1"/>
-<particle x="0.144 -0.072 14.256" v="0.0 0.0 0.0" fixed="1" group="1"/>
+<particle x="0.144 -0.072 14.256" v="0.0 0.0 0.0" fixed="0" group="1"/>
 
 <particle x="0.288 -0.072 0.0" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="0.288 0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="1"/>
@@ -19728,7 +19728,7 @@
 <particle x="13.968 -0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="13.968 -0.072 14.256" v="0.0 0.0 0.0" fixed="0" group="1"/>
 
-<particle x="14.112 -0.072 0.0" v="0.0 0.0 0.0" fixed="1" group="1"/>
+<particle x="14.112 -0.072 0.0" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="14.112 0.072 0.144" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="14.112 0.072 0.288" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="14.112 -0.072 0.432" v="0.0 0.0 0.0" fixed="0" group="1"/>
@@ -19827,12 +19827,12 @@
 <particle x="14.112 -0.072 13.824" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="14.112 0.072 13.968" v="0.0 0.0 0.0" fixed="0" group="1"/>
 <particle x="14.112 0.072 14.112" v="0.0 0.0 0.0" fixed="0" group="1"/>
-<particle x="14.112 -0.072 14.256" v="0.0 0.0 0.0" fixed="1" group="1"/>
+<particle x="14.112 -0.072 14.256" v="0.0 0.0 0.0" fixed="0" group="1"/>
 
-<particle x="0.0 0.0 0.0" v="0.0 0.0 0.0" fixed="1" group="2"/>
-<particle x="14.256 0.0 0.0" v="0.0 0.0 0.0" fixed="1" group="2"/>
-<particle x="0.0 0.0 14.256" v="0.0 0.0 0.0" fixed="1" group="2"/>
-<particle x="14.256 0.0 14.256" v="0.0 0.0 0.0" fixed="1" group="2"/>
+<particle x="0.0 0.0 0.0" v="0.0 0.0 0.0" fixed="0" group="2"/>
+<particle x="14.256 0.0 0.0" v="0.0 0.0 0.0" fixed="0" group="2"/>
+<particle x="0.0 0.0 14.256" v="0.0 0.0 0.0" fixed="0" group="2"/>
+<particle x="14.256 0.0 14.256" v="0.0 0.0 0.0" fixed="0" group="2"/>
 
 <hair params="0" start="0" count="100"/>
 <hair params="0" start="100" count="100"/>

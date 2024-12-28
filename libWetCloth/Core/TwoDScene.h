@@ -175,6 +175,10 @@ class TwoDScene : public std::enable_shared_from_this<TwoDScene> {
 
   VectorXs& getRadius();
 
+  inline const auto& getStrands() const {
+    return m_strands;
+  }
+
   const VectorXs& getGaussX() const;
 
   VectorXs& getGaussX();

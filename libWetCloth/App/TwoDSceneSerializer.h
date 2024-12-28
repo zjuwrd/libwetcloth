@@ -45,6 +45,7 @@ struct SerializePacket {
   std::vector<Vector2s> m_hair_radii;
   std::vector<scalar> m_hair_sat;
   std::vector<int> m_hair_group;
+  std::vector< std::vector< Vector3s> > m_hair_1st_frames;
 
   std::vector<Vector3s> m_attach_spring_vertices;
 

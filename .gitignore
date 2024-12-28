@@ -22,4 +22,4 @@ result*/*
 /.cache
 /.vscode
 /compile_commands.json
-
+/yarn_small

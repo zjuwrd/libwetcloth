@@ -11,8 +11,6 @@
 #define STRAND_FORCE_H
 
 #include <Eigen/Core>
-#include <iostream>
-#include <unordered_set>
 
 #include "../ElasticParameters.h"
 #include "../Force.h"
@@ -143,6 +141,10 @@ class StrandForce : public Force {
   void accumulateQuantity(AccumulatedT& accumulated);
 
   void accumulateHessian(TripletXs& accumulated, TripletXs& accumulated_twist);
+
+  inline const auto& get_Frames1() const {
+    return m_strandState->m_referenceFrames1.get();
+  }
 
  private:
   //// FOSSSim related //////////////////////////////////////////////////

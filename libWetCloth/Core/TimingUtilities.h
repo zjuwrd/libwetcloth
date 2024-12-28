@@ -11,9 +11,7 @@
 #ifndef TIMING_UTILS_H
 #define TIMING_UTILS_H
 
-#include <time.h>
 
-#include <iostream>
 
 namespace timingutils {
 

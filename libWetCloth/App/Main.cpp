@@ -31,20 +31,16 @@
 #endif
 
 #include "Camera.h"
-#include "Force.h"
 #include "MathDefs.h"
 #include "StringUtilities.h"
 #include "TimingUtilities.h"
 #include "TwoDScene.h"
-#include "TwoDSceneSerializer.h"
 #include "TwoDSceneXMLParser.h"
 
 #ifdef RENDER_ENABLED
 #include <AntTweakBar.h>
 
 #include "RenderingUtilities.h"
-#include "TwoDSceneRenderer.h"
-#include "TwoDimensionalDisplayController.h"
 #include "YImage.h"
 #endif
 
@@ -70,6 +66,8 @@ renderingutils::Color g_bgcolor(1.0, 1.0, 1.0);
 std::string g_xml_scene_file;
 std::string g_description;
 std::string g_scene_tag = "";
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Scene input/output/comparison state

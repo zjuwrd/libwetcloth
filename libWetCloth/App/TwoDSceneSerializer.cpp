@@ -17,6 +17,8 @@
 #include <numeric>
 
 #include "AttachForce.h"
+#include "DER/StrandForce.h"
+#include "ThreadUtils.h"
 
 const int num_cloth_edge_discretization = 6;
 
@@ -46,21 +48,39 @@ void serialize_subprog(SerializePacket* packet) {
               << packet->m_fluid_radii[i] << std::endl;
   }
 
-  std::ofstream ofs_hair(packet->fn_hairs.c_str());
-  const int num_hair_vtx = packet->m_hair_vertices.size();
-  for (int i = 0; i < num_hair_vtx; ++i) {
-    ofs_hair << "v " << std::setprecision(8) << packet->m_hair_vertices[i](0)
-             << " " << packet->m_hair_vertices[i](1) << " "
-             << packet->m_hair_vertices[i](2) << " "
-             << packet->m_hair_radii[i](0) << " " << packet->m_hair_radii[i](1)
-             << " " << packet->m_hair_sat[i] << " " << packet->m_hair_group[i]
-             << " " << packet->m_hair_vertices_rest[i](0) << " "
-             << packet->m_hair_vertices_rest[i](1) << " "
-             << packet->m_hair_vertices_rest[i](2) << std::endl;
+
+  //output hair info
+  {
+    std::ofstream ofs_hair(packet->fn_hairs.c_str());
+    const int num_hair_vtx = packet->m_hair_vertices.size();
+    for (int i = 0; i < num_hair_vtx; ++i) {
+      ofs_hair << "v " << std::setprecision(8) << packet->m_hair_vertices[i](0)
+              << " " << packet->m_hair_vertices[i](1) << " "
+              << packet->m_hair_vertices[i](2) << " "
+              << packet->m_hair_radii[i](0) << " " << packet->m_hair_radii[i](1)
+              << " " << packet->m_hair_sat[i] << " " << packet->m_hair_group[i]
+              << " " << packet->m_hair_vertices_rest[i](0) << " "
+              << packet->m_hair_vertices_rest[i](1) << " "
+              << packet->m_hair_vertices_rest[i](2) << std::endl;
+    }
+    for (auto& e : packet->m_hair_indices) {
+      ofs_hair << "l " << (e(0) + 1) << " " << (e(1) + 1) << std::endl;
+    }
+
+    //output frame info
+    std::ofstream ofs_hair_frame(packet->fn_hairs.substr(0,packet->fn_hairs.length()-4) + "_1st_frame.txt");
+    for(int i=0;i<packet->m_hair_1st_frames.size();i++){
+      ofs_hair_frame << "Hair-" << i << std::endl;
+      for(int j=0;j<packet->m_hair_1st_frames[i].size();j++){
+        ofs_hair_frame << std::scientific << std::setprecision(12)
+                << packet->m_hair_1st_frames[i][j](0) << "\t"
+                << packet->m_hair_1st_frames[i][j](1) << "\t"
+                << packet->m_hair_1st_frames[i][j](2) << "\n";
+      }
+      ofs_hair_frame << std::endl;
+    }
   }
-  for (auto& e : packet->m_hair_indices) {
-    ofs_hair << "l " << (e(0) + 1) << " " << (e(1) + 1) << std::endl;
-  }
+
 
   std::ofstream ofs_cloth(packet->fn_clothes.c_str());
   const int num_cloth_vtx = packet->m_dbl_face_cloth_vertices.size();
@@ -116,14 +136,14 @@ void serialize_subprog(SerializePacket* packet) {
   }
 
   ofs_fluid.flush();
-  ofs_hair.flush();
+  // ofs_hair.flush();
   ofs_cloth.flush();
   ofs_internal.flush();
   ofs_external.flush();
   ofs_spring.flush();
 
   ofs_fluid.close();
-  ofs_hair.close();
+  // ofs_hair.close();
   ofs_cloth.close();
   ofs_internal.close();
   ofs_external.close();
@@ -189,6 +209,7 @@ void TwoDSceneSerializer::updateHairs(const TwoDScene& scene,
   const VectorXs& vol = scene.getVol();
   const VectorXs& fvol = scene.getFluidVol();
   const std::vector<int>& group = scene.getParticleGroup();
+  const auto& strands = scene.getStrands();
 
   const int num_soft_elasto = scene.getNumSoftElastoParticles();
   const MatrixXi& edges = scene.getEdges();
@@ -236,6 +257,17 @@ void TwoDSceneSerializer::updateHairs(const TwoDScene& scene,
     const int mapped_idx_1 = hair_indicator[edges(eidx, 1)] - 1;
 
     data->m_hair_indices[eidx] = Vector2i(mapped_idx_0, mapped_idx_1);
+  });
+
+  data->m_hair_1st_frames.resize(strands.size());
+  threadutils::for_each(0, (int)strands.size(),[&](int strand_idx){
+    const auto& strand = strands[strand_idx];
+    const auto& frames = strand->get_Frames1();
+    auto& output_frames = data->m_hair_1st_frames[strand_idx];
+    output_frames.reserve(frames.size());
+    for(const auto& frame : frames){
+      output_frames.emplace_back(frame);
+    }
   });
 }
 

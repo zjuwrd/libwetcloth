@@ -14,7 +14,6 @@
 #include <Eigen/Core>
 
 #include "MathDefs.h"
-#include "Array3.h"
 #include "PCGSolver/SparseMatrix.h"
 
 class TwoDScene;

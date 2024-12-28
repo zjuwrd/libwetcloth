@@ -14,8 +14,6 @@
 #include <iostream>
 #include <numeric>
 
-#include "AlgebraicMultigrid.h"
-#include "MathUtilities.h"
 #include "ThreadUtils.h"
 #include "TwoDScene.h"
 #include "PCGSolver/PCGSolver.h"

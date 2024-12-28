@@ -12,6 +12,7 @@
 
 #include <fstream>
 #include <string>
+#include <unordered_set>
 
 #include "MathDefs.h"
 

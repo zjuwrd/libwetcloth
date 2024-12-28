@@ -9,6 +9,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 #include "TimingUtilities.h"
+#include <cstddef>
 
 #ifdef WIN32
 #include < windows.h >
